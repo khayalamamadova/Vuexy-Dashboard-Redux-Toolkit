@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUser, registerUser } from "../features/userSlice/userSlice";
 import { useNavigate } from "react-router-dom";
 
-const PasswordBtn = styled(Button)({
+export const PasswordBtn = styled(Button)({
   position: "absolute",
   right: "0",
   top: "25%",

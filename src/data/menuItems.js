@@ -15,7 +15,6 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import CurrencyExchangeOutlinedIcon from "@mui/icons-material/CurrencyExchangeOutlined";
 import LiveHelpOutlinedIcon from "@mui/icons-material/LiveHelpOutlined";
-import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 
 
 export const menuItems = [
@@ -27,23 +26,22 @@ export const menuItems = [
     {
         text: 'User list',
         icon: <PeopleOutlinedIcon/>,
-        path: 'add-jobs'
+        path: '/add-jobs'
     },
     {
         text: 'Email',
         icon: <MailOutlineOutlinedIcon/>,
-        path: 'all-jobs'
+        path: '/all-jobs'
     },
-    {
-        text: 'Chat',
-        icon: <ChatOutlinedIcon/>,
-        path: 'profile'
-    }
-    ,
     {
         text: 'Calendar',
         icon: <InsertInvitationOutlinedIcon/>,
-        path: 'stats'
+        path: '/stats'
+    },
+    {
+        text: 'User Profile',
+        icon: <ChatOutlinedIcon/>,
+        path: '/profile'
     },
     {
         text: 'Pages',
@@ -114,11 +112,6 @@ export const accountMenu = [
     {
         text: 'FAQ',
         icon: <LiveHelpOutlinedIcon />,
-        path: '/',
-    },
-    {
-        text: 'Logout',
-        icon: <LogoutOutlinedIcon />,
         path: '/',
     },
 ]

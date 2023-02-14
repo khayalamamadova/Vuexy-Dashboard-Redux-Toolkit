@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import React, { useState } from "react";
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { menuItems } from "../../data/menuItems";
 import {
@@ -11,19 +11,14 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import AdjustIcon from '@mui/icons-material/Adjust';
+import PanoramaFishEyeIcon from '@mui/icons-material/PanoramaFishEye';
 
-// const BigSideBarWrapper = styled("div")({
-//   position: "fixed",
-//   left: 0,
-//   top: 0,
-//   minHeight: "100vh",
-//   padding: "0 14px",
-// });
+
 
 const BigSidebar = ({ toggleMenu, sidebar }) => {
   const history = useNavigate();
   const location = useLocation();
-  console.log(sidebar);
 
   return (
     <Box
@@ -91,10 +86,9 @@ const BigSidebar = ({ toggleMenu, sidebar }) => {
               }}
               className='activeBlock'
             >
-              {" "}
-              Vuexy!
-              <button type="button" onClick={toggleMenu}>
-                test
+              <span>Vuexy</span>
+              <button type="button" onClick={toggleMenu} style={{background: 'transparent', border: 'none', outline: 'none', color: '#e4e6f4de',position: 'relative', top: '3px',right: '-68px',cursor: 'pointer'}}>
+                {sidebar ? <AdjustIcon /> : <PanoramaFishEyeIcon/>}
               </button>
             </Typography>
           </Box>

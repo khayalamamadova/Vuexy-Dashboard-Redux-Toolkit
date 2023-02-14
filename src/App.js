@@ -9,13 +9,19 @@ import Profile from "./pages/Dashboard/Profile";
 import AddJobs from "./pages/Dashboard/AddJobs";
 import AllJobs from "./pages/Dashboard/AllJobs";
 import Stats from "./pages/Dashboard/Stats";
+import ProtectedRouter from "./pages/Dashboard/ProtectedRouter";
+
 
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<SharedLayout/>}>
+        <Route path="/" element={
+          <ProtectedRouter>
+          <SharedLayout/>
+          </ProtectedRouter>
+        }>
           <Route index element={<Stats/>}/>
           <Route path='all-jobs' element={<AllJobs/>}/>
           <Route path='add-jobs' element={<AddJobs/>}/>
