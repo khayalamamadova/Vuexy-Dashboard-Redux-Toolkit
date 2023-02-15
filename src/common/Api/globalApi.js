@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const customFetch = axios.create({
-    baseURL: 'https://jobify-prod.herokuapp.com/api/v1/toolkit'
+    baseURL: process.env.REACT_APP_API_URL
 })
