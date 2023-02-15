@@ -34,6 +34,12 @@ const Register = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  useEffect(()=>{
+    if(user){
+        navigate('/')
+    }
+  },[user,navigate])
+
   const handleIncognito = () => {
     setIncognito(!incognito);
   };
@@ -57,11 +63,7 @@ const Register = () => {
     
   };
 
-  useEffect(()=>{
-    if(user){
-        navigate('/')
-    }
-  },[user,navigate])
+
 
   const handleChange = (e) => {
     const name = e.target.name;
