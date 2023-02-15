@@ -125,7 +125,7 @@ function AccountMenu() {
                 textTransform: 'capitalize'
               }}
               type='button'
-              onClick={()=> dispatch(logoutUser())}
+              onClick={()=> dispatch(logoutUser('Log out'))}
             >
                 <LogoutOutlinedIcon />
               <Box component='span' sx={{display: 'inline-block',ml:'32px'}}>Log out</Box>
