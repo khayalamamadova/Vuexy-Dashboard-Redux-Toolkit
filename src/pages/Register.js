@@ -39,13 +39,7 @@ const Register = () => {
   };
 
 
-  useEffect(()=>{
-    if(user){
-      setTimeout(()=>{
-        navigate('/')
-      })
-    }
-  },[user,navigate])
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,6 +56,12 @@ const Register = () => {
   
     
   };
+
+  useEffect(()=>{
+    if(user){
+        navigate('/')
+    }
+  },[user,navigate])
 
   const handleChange = (e) => {
     const name = e.target.name;
