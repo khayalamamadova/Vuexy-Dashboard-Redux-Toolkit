@@ -8,3 +8,17 @@ body {
 .activeStyle {
   color: red;
 }
+
+.pending {
+  color: rgb(255,159,67);
+  background-color:rgba(255,159,67,0.1) ;
+
+}
+.declined {
+  color: rgb(168,170,174);
+  background-color:rgba(168,170,174,0.1) ;
+}
+.interview {
+  color: rgb(40,199,111);
+  background-color:rgba(40,199,111,0.1) ;
+}

@@ -1,13 +1,15 @@
-import { Box, Button, Paper, Container } from "@mui/material";
-import React from "react";
+import { Box, Button, Paper, Container, Typography } from "@mui/material";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import FormField from "../../components/FormField/FormField";
 import FormSelect from "../../components/FormSelect/FormSelect";
+import SearchContainer from "../../components/SearchContainer/SearchContainer";
 import {
   handleChange,
   clearValues,
   createJob,
+  editJob,
 } from "../../features/jobSlice/jobSlice";
 
 const AddJobs = () => {
@@ -24,6 +26,8 @@ const AddJobs = () => {
     editJobId,
   } = useSelector((store) => store.job);
   const dispatch = useDispatch();
+  const { user } = useSelector((store) => store.user);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,6 +36,24 @@ const AddJobs = () => {
       toast.error("Please fill out all fields");
       return;
     }
+    if (isEditing) {
+      dispatch(
+        editJob({
+          jobId: editJobId,
+          job: {
+            position,
+            company,
+            jobLocation,
+            jobType,
+            status,
+          },
+        })
+      );
+      return;
+
+    }
+
+    
     dispatch(createJob({ position, company, jobLocation, jobType, status }));
   };
 
@@ -40,9 +62,18 @@ const AddJobs = () => {
     const value = e.target.value;
     dispatch(handleChange({ name, value }));
   };
+  
   return (
     <Container>
+      <Typography>{isEditing ? "edit job" : "add job"}</Typography>
+      {/* <Button onClick={handleaddJobBtn}>+Add new Job</Button> */}
+      {/* sx={{display: addJobBtn ? 'block' :'none',visibility: addJobBtn ? 'visible' : 'hidden'}} */}
+      <Button>+Add new Job</Button>
+
       <Paper variant="outlined">
+        <Typography element="h3">
+          {isEditing ? "edit job" : "add job"}
+        </Typography>
         <Box component="form">
           {/* position */}
           <FormField
@@ -92,6 +123,7 @@ const AddJobs = () => {
           </Button>
         </Box>
       </Paper>
+      <SearchContainer />
     </Container>
   );
 };
