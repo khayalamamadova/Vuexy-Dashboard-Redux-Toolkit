@@ -29,7 +29,7 @@ const Search = styled("div")(({ theme }) => ({
   },
 }));
 
-function Appbar() {
+function Appbar({sidebar}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -69,12 +69,11 @@ function Appbar() {
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
-
   return (
     <Box>
       <AppBar
         sx={{
-          width: `calc(100% - 300px)`,
+          width: sidebar ? "calc(100% - 300px)" :"calc(100% - 140px)",
           margin: "24px",
           borderRadius: "8px",
           backgroundColor: "#FEFEFF",

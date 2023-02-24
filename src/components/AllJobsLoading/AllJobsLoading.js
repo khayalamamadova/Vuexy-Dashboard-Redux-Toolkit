@@ -3,7 +3,7 @@ import { Box, LinearProgress } from '@mui/material'
 
 const AllJobsLoading = () => {
   return (
-    <Box sx={{ width: '100%', padding: '64px' }}>
+    <Box sx={{ minWidth: '400px', padding: '64px' }}>
     <LinearProgress />
   </Box>
   )

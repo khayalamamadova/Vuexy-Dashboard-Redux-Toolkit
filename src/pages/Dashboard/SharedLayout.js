@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box,Container } from "@mui/material";
 import React, {useState} from "react";
 import { Outlet } from "react-router-dom";
 import BigSidebar from "../../components/BigSidebar/BigSidebar";
@@ -19,9 +19,10 @@ const SharedLayout = () => {
 
   return (
     <MainWrapper component="main">
-      <Box component="aside" sx={{width: sidebar ? '260px' : '76px',  position: "fixed",
+      <Box component="aside" sx={{width: sidebar ? '260px' : '82px',  position: "fixed",
   left: 0,
   top: 0,
+  zIndex: '9999',
   minHeight: "100vh",
   padding: "0 14px", bgcolor: 'secondary.main','&:hover': {
     width: '260px',
@@ -30,11 +31,12 @@ const SharedLayout = () => {
         <BigSidebar  toggleMenu={toggleSidebar} sidebar={sidebar}/>
         <SmallSidebar />
       </Box>
-      <Box sx={{ width: sidebar ? "calc(100% - 260px)" :"calc(100% - 76px)" , background: "red",  marginLeft: sidebar ? '260px' : '76px'}}>
-        <Appbar />
-        <Box sx={{ marginTop: "120px", background: "pink", height: "100%" }}>
-          <Outlet />
-        </Box>
+      <Box sx={{ width: sidebar ? "calc(100% - 260px)" :"calc(100% - 76px)" , background:'#F8F7FA',  marginLeft: sidebar ? '260px' : '76px'}}>
+        <Appbar sidebar={sidebar}/>
+        <Container sx={{marginTop: "120px", height: "100%" }}>
+          <Outlet/>
+        </Container>
+
       </Box>
     </MainWrapper>
   );
