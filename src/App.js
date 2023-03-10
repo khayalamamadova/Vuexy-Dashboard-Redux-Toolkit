@@ -10,6 +10,9 @@ import AddJobs from "./pages/Dashboard/AddJobs";
 import AllJobs from "./pages/Dashboard/AllJobs";
 import Stats from "./pages/Dashboard/Stats";
 import ProtectedRouter from "./pages/Dashboard/ProtectedRouter";
+import Single from "./pages/Dashboard/Single";
+import AddUser from "./pages/Dashboard/AddUser";
+
 
 
 
@@ -22,11 +25,19 @@ function App() {
           <SharedLayout/>
           </ProtectedRouter>
         }>
-          <Route index element={<Stats/>}/>
+            <Route path="/">
+              <Route index element={<Stats />} />
+              <Route path="/:userId" element={<Single />} />
+              {/* <Route
+                path="new"
+                element={<New inputs={productInputs} title="Add New Product" />}
+              /> */}
+            </Route>
+
           <Route path='all-jobs' element={<AllJobs/>}/>
           <Route path='add-jobs' element={<AddJobs/>}/>
+          <Route path='add-user' element={<AddUser/>}/>
           <Route path='profile' element={<Profile/>}/>
-          <Route path='stats' element={<Stats/>}/>
         </Route>
         <Route path="/landing" element={<Landing/>} />
         <Route path="/register" element={<Register />} />

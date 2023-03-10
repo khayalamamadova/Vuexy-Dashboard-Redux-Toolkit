@@ -24,6 +24,8 @@ import FemaleIcon from "@mui/icons-material/Female";
 import MaleIcon from "@mui/icons-material/Male";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
+import AddUserBtn from "../../components/AddUserBtn/AddUserBtn";
+
 
 
 const columns = [
@@ -37,7 +39,7 @@ const columns = [
     title: "role",
   },
   {
-    title: "billing",
+    title: "city",
   },
   {
     title: "gender",
@@ -66,15 +68,15 @@ const Stats = () => {
 
   useEffect(() => {
     dispatch(fetchAsyncTable());
-  }, [dispatch]);
+  }, []);
 
-  const newData = userData["users"];
+
   //mui
 
-  console.log(newData);
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden", marginTop: "32px" }}>
+      <AddUserBtn/>
       <TableContainer sx={{ maxHeight: 600 }}>
         {loading ? (
           <AllJobsLoading />
@@ -100,8 +102,8 @@ const Stats = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {newData?.map((user) => {
-                const { id, firstName, image, lastName, username, gender } =
+              {userData.map((user) => {
+                const { id, firstName, image, lastName, username, gender,city,department,name,title } =
                   user;
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={id}>
@@ -125,7 +127,7 @@ const Stats = () => {
                           />
                         </Box>
                         <Box sx={{ textTransform: "capitalize" }}>
-                          <Link style={{ textDecoration: "none" }}>
+                          <Link to={`/${id}`} style={{ textDecoration: "none" }}>
                             <Typography
                               sx={{
                                 fontSize: "16px",
@@ -142,6 +144,7 @@ const Stats = () => {
                               fontSize: "14px",
                               lineHeight: "20px",
                               color: "rgba(51,48,60,.38)",
+                              textTransform:'lowercase'
                             }}
                             variant="subtitle1"
                             gutterBottom
@@ -160,7 +163,7 @@ const Stats = () => {
                         color: "rgba(51,48,60,.87)",
                       }}
                     >
-                      {user.company.department}
+                      {department}
                     </TableCell>
                     <TableCell
                       sx={{
@@ -172,7 +175,7 @@ const Stats = () => {
                         color: "rgba(51,48,60,.87)",
                       }}
                     >
-                      {user.company.title}
+                      {title}
                     </TableCell>
                     <TableCell sx={{                         width: "calc(72 % / 5 )",
  }}>
@@ -186,7 +189,7 @@ const Stats = () => {
                           textTransform: "capitalize",
                         }}
                       >
-                        {user.bank.cardType}
+                        {city}
                       </Box>
                     </TableCell>
                     <TableCell
@@ -201,11 +204,11 @@ const Stats = () => {
                     </TableCell>
                     <TableCell>
                     <Stack direction="row" spacing={1}>
-      <IconButton>
+      <IconButton >
         <EditIcon />
       </IconButton>
       <IconButton onClick={()=> dispatch(deleteRow(id))}>
-        <DeleteOutlineIcon />
+        <DeleteOutlineIcon/>
       </IconButton>
 
     </Stack>

@@ -34,11 +34,6 @@ export const menuItems = [
         path: '/all-jobs'
     },
     {
-        text: 'Calendar',
-        icon: <InsertInvitationOutlinedIcon/>,
-        path: '/stats'
-    },
-    {
         text: 'User Profile',
         icon: <ChatOutlinedIcon/>,
         path: '/profile'
@@ -47,6 +42,11 @@ export const menuItems = [
         text: 'Pages',
         icon: <DescriptionOutlinedIcon/>,
         path: '*'
+    },
+    {
+        text: 'Add User',
+        icon: <DescriptionOutlinedIcon/>,
+        path: '/add-user'
     }
 ];
 
