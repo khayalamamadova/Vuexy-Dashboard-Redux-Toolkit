@@ -5,6 +5,7 @@ import FormField from "../FormField/FormField";
 import { Box, Button } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import { updateUser } from "../../features/userSlice/userSlice";
+import UserDetails from "../UserDetails/UserDetails";
 
 const ProfileDetails = () => {
   const { isLoading, user } = useSelector((store) => store.user);
@@ -33,60 +34,67 @@ const ProfileDetails = () => {
   };
   return (
     <Box component="form" onSubmit={handleSubmit}>
-      <FormField
-        type="text"
-        value={userData.name}
-        labelName="Name"
-        name="name"
-        handleChange={handleChange}
-      />
-      <FormField
-        type="text"
-        value={userData.lastName}
-        labelName="Last Name"
-        name="lastName"
-        handleChange={handleChange}
-      />
-      <FormField
-        labelName="Email"
-        type="email"
-        value={userData.email}
-        name="email"
-        handleChange={handleChange}
-      />
-      <FormField
-        labelName="Location"
-        type="text"
-        value={userData.location}
-        name="location"
-        handleChange={handleChange}
-      />
-      <Button
-        sx={{
-          fontSize: 16,
-          border: "1px solid #7367F0",
-          height: "38px",
-          backgroundColor: "#7367F0",
-          lineHeight: "30px",
-          color: "#fff",
-          minWidth: "150px",
-          display: "inline-block",
-          textAlign: "center",
-          cursor: "pointer",
-          borderRadius: "4px",
-          textDecoration: "none",
-          transition: "ease all 0.4s",
-          width: "100%",
-          "&:hover": {
-            color: "#7367F0",
-            backgroundColor: "transparent",
-          },
-        }}
-        disabled={isLoading}
-        type='submit'
-      >
-        {isLoading ? <CircularProgress sx={{color: '#fff'}} size='1.5rem'/> : "Save"}
-      </Button>
+      <UserDetails userName={userData.name} userSurname={userData.lastName} />
+      <Box component="form" sx={{paddingTop: '24px'}}>
+        <FormField
+          type="text"
+          value={userData.name}
+          labelName="Name"
+          name="name"
+          handleChange={handleChange}
+        />
+        <FormField
+          type="text"
+          value={userData.lastName}
+          labelName="Last Name"
+          name="lastName"
+          handleChange={handleChange}
+        />
+        <FormField
+          labelName="Email"
+          type="email"
+          value={userData.email}
+          name="email"
+          handleChange={handleChange}
+        />
+        <FormField
+          labelName="Location"
+          type="text"
+          value={userData.location}
+          name="location"
+          handleChange={handleChange}
+        />
+        <Button
+          sx={{
+            fontSize: 16,
+            border: "1px solid #7367F0",
+            height: "38px",
+            backgroundColor: "#7367F0",
+            lineHeight: "30px",
+            color: "#fff",
+            minWidth: "150px",
+            display: "inline-block",
+            textAlign: "center",
+            cursor: "pointer",
+            borderRadius: "4px",
+            textDecoration: "none",
+            transition: "ease all 0.4s",
+            width: "100%",
+            "&:hover": {
+              color: "#7367F0",
+              backgroundColor: "transparent",
+            },
+          }}
+          disabled={isLoading}
+          type="submit"
+        >
+          {isLoading ? (
+            <CircularProgress sx={{ color: "#fff" }} size="1.5rem" />
+          ) : (
+            "Save"
+          )}
+        </Button>
+      </Box>
     </Box>
   );
 };

@@ -26,28 +26,13 @@ export const menuItems = [
     {
         text: 'User list',
         icon: <PeopleOutlinedIcon/>,
-        path: '/add-jobs'
+        path: '*'
     },
     {
         text: 'Email',
         icon: <MailOutlineOutlinedIcon/>,
-        path: '/all-jobs'
-    },
-    {
-        text: 'User Profile',
-        icon: <ChatOutlinedIcon/>,
-        path: '/profile'
-    },
-    {
-        text: 'Pages',
-        icon: <DescriptionOutlinedIcon/>,
         path: '*'
     },
-    {
-        text: 'Add User',
-        icon: <DescriptionOutlinedIcon/>,
-        path: '/add-user'
-    }
 ];
 
 export const MegaMenu = [
@@ -97,7 +82,7 @@ export const accountMenu = [
     {
         text: 'Profile',
         icon: <PersonOutlineOutlinedIcon />,
-        path: '/',
+        path: '/profile',
     },
     {
         text: 'Settings',

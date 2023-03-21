@@ -12,7 +12,7 @@ import {
 
 const FormSelect = ({ labelText, name, value, handleChange, list }) => {
   return (
-    <FormControl fullWidth sx={{ marginBottom: "16px" }}>
+    <FormControl fullWidth sx={{ margin: "16px 0" }}>
       <InputLabel id={name}>{labelText || name}</InputLabel>
       <Select
         labelId={name}

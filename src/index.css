@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@600;700&display=swap');
+
 body {
   margin: 0;
   padding: 0;
 }
 * {
-  box-sizing: border-box;
+  font-family: 'Public Sans', sans-serif;
 }
 .activeStyle {
   color: red;

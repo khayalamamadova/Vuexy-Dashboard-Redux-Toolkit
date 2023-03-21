@@ -2,27 +2,22 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import { useState } from "react";
-import { TextField } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import tableSlice, {
+import {
   handleChange,
   clearValues,
-  addNewRow,
-  fetchAsyncTable,
+  createUser,
 } from "../../features/tableSlice/tableSlice";
 import { toast } from "react-toastify";
 import FormField from "../FormField/FormField";
 import FormSelect from "../FormSelect/FormSelect";
-import { useNavigate } from "react-router-dom";
-
-
 
 export default function AddUserBtn() {
   const [state, setState] = useState({
     right: false,
   });
-  const navigate = useNavigate()
   const {
     isLoading,
     firstName,
@@ -59,17 +54,21 @@ export default function AddUserBtn() {
       toast.error("Please fill all fields");
       return;
     }
-    dispatch(
-      addNewRow({
-        firstName,
-        lastName,
-        username,
-        department,
-        city,
-        gender,
-        title,
-      })
-    );
+    if(!isEditing) {
+      dispatch(
+        createUser({
+          firstName,
+          lastName,
+          username,
+          department,
+          city,
+          gender,
+          title,
+        })
+      );
+    } else {
+      console.log('hello');
+    }
     dispatch(clearValues());
   };
 
@@ -81,7 +80,7 @@ export default function AddUserBtn() {
 
   const list = () => (
     <Box sx={{ width: 374, padding: "24px" }} title="presentation">
-      <h3>{isEditing ? "edit user" : "add user"}</h3>
+      <Typography component='h4' sx={{textTransform: 'uppercase', color: '#7367F0',fontSize: '16px', fontWeight: '600', lineHeight: '24px',textAlign:'center'}}>add new user</Typography>
       <Box component="form" onClick={(e) => e.preventDefault()}>
         <FormField
           type="text"
@@ -113,7 +112,7 @@ export default function AddUserBtn() {
         />
         <FormSelect
           name="title"
-          labelText="title"
+          labelText="Title"
           value={title}
           handleChange={handleInput}
           list={titleOptions}
@@ -146,7 +145,10 @@ export default function AddUserBtn() {
     <div>
       {["right"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>Add Button</Button>
+          <Button sx={{background: '#7367F0', color: '#fff',border: '1px solid transparent', '&:hover': {
+            color: '#7367F0',
+            border: '1px solid #7367F0'
+          }}} onClick={toggleDrawer(anchor, true)}> + Add new user</Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
