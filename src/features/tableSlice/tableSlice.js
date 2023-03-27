@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const USERS_URL = 'http://localhost:3001/users';
+const USERS_URL = 'https://users-data.onrender.com/users';
 
 
 const initialState = {
@@ -116,7 +116,7 @@ export const editUser = createAsyncThunk(
   'users/editUser',
   async({id,user,navigate}, {rejectWithValue,dispatch}) => {
     try {
-      const response = await axios.patch(`http://localhost:3001/users/${id}`, user)
+      const response = await axios.patch(`${USERS_URL}/${id}`, user)
       toast.success('User modified successfully...')
       navigate('/')
       dispatch(clearValues())
